@@ -7,6 +7,10 @@ hans:
 		${cmd} $$name -o $${name//tw/cn} ; \
 	done
 
+init:
+	@cp README.md zh-tw/
+	@$(MAKE) hans
+
 serve:
 	@gitbook serve
 
@@ -15,3 +19,6 @@ build:
 
 clean:
 	rm -fr _book
+
+publish:
+	@ghp-import _book -p -n
